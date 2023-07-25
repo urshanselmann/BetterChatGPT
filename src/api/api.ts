@@ -66,7 +66,8 @@ export const getChatCompletionStream = async (
 
     const gpt3forAzure = 'gpt-35-turbo';
     const model =
-      config.model === 'gpt-3.5-turbo' ? gpt3forAzure : config.model;
+      config.model === 'gpt-3.5-turbo' ? gpt3forAzure : 
+        (config.model === 'gpt-3.5-turbo-16k' ? 'gpt-35-turbo-16k' : config.model);
     const apiVersion = '2023-03-15-preview';
 
     const path = `openai/deployments/${model}/chat/completions?api-version=${apiVersion}`;
